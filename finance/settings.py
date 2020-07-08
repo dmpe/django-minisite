@@ -24,7 +24,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]
 
 
 # Application definition

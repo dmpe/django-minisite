@@ -69,8 +69,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'finance.wsgi.application'
 
-DATABASES = None
-DATABASES['default'] = dj_database_url.config(ssl_require=True,conn_max_age=600)
+DATABASES = {"default": dj_database_url.config(ssl_require=True,conn_max_age=600)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

@@ -1,13 +1,11 @@
-import django.contrib.auth.models
-from main.models import Firm_User, Firm_Recommendation
-from rest_framework import serializers
+from django.contrib.auth.models import User
+from main.models import Firm_Recommendation
+from rest_framework import serializers, viewsets, routers
 
-
-class FirmUserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Firm_User
-        fields = ['short_username', 'first_name', 'second_name', 'email']
-
+        model = User
+        fields = ['url', 'username', 'email', 'is_staff']
 
 class FirmRecommendationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

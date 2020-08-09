@@ -10,5 +10,6 @@ router.register(r'recommendation', views.RecommendationViewSet)
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

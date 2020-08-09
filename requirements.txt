@@ -7,3 +7,6 @@ django-filter
 markdown
 djangorestframework
 drf-yasg[validation]
+django-bootstrap4
+
+

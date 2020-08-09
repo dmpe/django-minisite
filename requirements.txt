@@ -8,5 +8,5 @@ markdown
 djangorestframework
 drf-yasg[validation]
 django-bootstrap4
-
+django-auth-ldap
 

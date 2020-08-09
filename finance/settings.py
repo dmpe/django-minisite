@@ -26,9 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'bootstrap4',
+    'rest_framework',
 
 ]
 

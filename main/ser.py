@@ -10,4 +10,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class FirmRecommendationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Firm_Recommendation
-        fields = ['name']
+        fields = ['*']

@@ -14,10 +14,10 @@
         data:tabledata, //set the table data
         layout:"fitColumns", //fit columns to width of table (optional)
         columns:[ //Define Table Columns
-            {title:"Name", field:"name", width:150},
-            {title:"Age", field:"age", align:"left", formatter:"progress"},
-            {title:"Favourite Color", field:"col"},
-            {title:"Date Of Birth", field:"dob", sorter:"date", align:"center"},
+            {title:"Name", field:"name", width:150,editor:true},
+            {title:"Age", field:"age", align:"left", formatter:"progress",editor:true},
+            {title:"Favourite Color", field:"col",editor:true},
+            {title:"Date Of Birth", field:"dob", sorter:"date", align:"center",editor:true},
         ],
         rowClick:function(e, row){ //trigger an alert message when the row is clicked
             alert("Row " + row.getData().id + " Clicked!!!!");

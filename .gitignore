@@ -3,6 +3,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,python
 
+test.html
+
 ### Linux ###
 *~
 

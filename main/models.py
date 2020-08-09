@@ -3,8 +3,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 class Firm_Recommendation(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL)
-    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     starting_date = models.DateField()
     ending_date = models.DateField()
 

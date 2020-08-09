@@ -5,6 +5,7 @@ from main.models import Firm_Recommendation
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    # still not working
     url = serializers.HyperlinkedIdentityField(view_name="main:user-detail")
 
     class Meta:

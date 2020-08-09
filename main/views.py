@@ -1,8 +1,8 @@
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import permissions, viewsets
-
+from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
 
 
@@ -22,9 +22,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class RecommendationViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows Firm_Recommendation to be viewed or edited.
     """
 
-    queryset = Group.objects.all()
+    queryset = Firm_Recommendation.objects.all()
     serializer_class = FirmRecommendationSerializer
     permission_classes = [permissions.IsAuthenticated]

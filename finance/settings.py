@@ -22,6 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+CORS_ORIGIN_WHITELIST = (
+    'djangoex.herokuapp.com',
+    '.herokuapp.com'
+)
+
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = True

@@ -23,7 +23,7 @@
 <script type="text/javascript">
     var table = new Tabulator("#example-table", {
         height:'100%',
-        ajaxURL:"https://djangoex.herokuapp.com/recommendation/",
+        ajaxURL:"./recommendation/",
         ajaxConfig:{
             method:"GET",
             headers: {
@@ -47,11 +47,7 @@
             {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:true, responsive:2}, // hide this column first
             {title:"Pitch", field:"description", align:"center",editor:true},
             {title:"Analyst's Name", field:"user", align:"center",editor:false},
-        ],
-        rowSelectionChanged:function(data, rows){
-            //update selected row counter on selection change
-            document.getElementById("select-stats").innerHTML = data.length;
-        },
+        ]
     });
     document.getElementById("add-row").addEventListener("click", function(){
         table.addRow({});

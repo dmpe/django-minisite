@@ -12,16 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/css/bootstrap/tabulator_bootstrap4.min.css" integrity="sha512-uEWpGZKAzqeRfifcdwBBXxur+k9Z7bjRwWNROIDIpVtJTt2gAapH4Fulqk0rP2ACE0OFFWsCBccR6RZcw9WsCw==" crossorigin="anonymous" />
 </head>
 <body>
-    <nav>
-        <h1>Welcome to Finance</h1>
-    </nav>
-
-    <section class="content">
-        <header>
-            {% block header %}{% endblock %}
-        </header>
-        {% block content %}{% endblock %}
-    </section>
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% block content %}{% endblock %}
 
 
 {% block footer %}{% endblock %}

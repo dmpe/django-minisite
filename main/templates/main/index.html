@@ -4,6 +4,26 @@
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 {% endblock %}
 
+{% block content %}
+<div class="container-fluid">
+    <nav>
+        <h1>Welcome to Finance</h1>
+    </nav>
+    <h1>Hello World!</h1>
+
+    <div>
+        <button id="download-csv">Download CSV</button>
+        <button id="download-xlsx">Download XLSX</button>
+        <button id="add-row">Add Blank Row to the bottom</button>
+        <button id="select-all">Select all</button>
+        <button id="deselect-all">Deselect all</button>
+    </div>
+    <div id="example-table"></div>
+
+</div>
+{% endblock %}
+
+
 {% block footer %}
 <script type="text/javascript">
     var table = new Tabulator("#example-table", {
@@ -58,19 +78,4 @@
     });
 </script>
 
-{% endblock %}
-
-{% block content %}
-<h1>Hello World!</h1>
-<div class="container-fluid">
-    <div>
-        <button id="download-csv">Download CSV</button>
-        <button id="download-xlsx">Download XLSX</button>
-        <button id="add-row">Add Blank Row to the bottom</button>
-        <button id="select-all">Select all</button>
-        <button id="deselect-all">Deselect all</button>
-    </div>
-    <div id="example-table"></div>
-
-</div>
 {% endblock %}

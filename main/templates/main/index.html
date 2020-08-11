@@ -70,64 +70,6 @@
         <button id="select-all">Select all</button>
         <button id="deselect-all">Deselect all</button>
     </div>
-    <div id="example-table"></div>
 
 </div>
-{% endblock %}
-
-
-{% block footer %}
-<script type="text/javascript">
-    var table = new Tabulator("#example-table", {
-        height:'100%',
-        ajaxURL:"https://djangoex.herokuapp.com/recommendation/",
-        ajaxConfig:{
-            method:"GET",
-            headers: {
-                "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db', //set specific content type
-            },
-        },
-        clipboard:true,
-        selectable:true, //make rows selectable
-        clipboardPasteAction:"replace",
-        responsiveLayout:"hide",
-        layout:"fitDataStretch",
-        columns:[
-            {formatter:"rownum", hozAlign:"center", width:40},
-            {title:"Starting Date", field:"starting_date", width:150, editor:true},
-            {title:"Ending Date", field:"ending_date", editor:true},
-            {title:"Time Horizon", field:"time_horizon",editor:true},
-            {title:"Positioning", field:"positioning", align:"center",editor:true},
-            {title:"Position", field:"position", align:"center",editor:true},
-            {title:"Outperformance", field:"outperformance", align:"center",editor:true},
-            {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:true},
-            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:true, responsive:2}, // hide this column first
-            {title:"Pitch", field:"description", align:"center",editor:true},
-            {title:"Analyst's Name", field:"user", align:"center",editor:false},
-        ],
-        rowSelectionChanged:function(data, rows){
-            //update selected row counter on selection change
-            document.getElementById("select-stats").innerHTML = data.length;
-        },
-    });
-    document.getElementById("add-row").addEventListener("click", function(){
-        table.addRow({});
-    });
-    //trigger download of data.csv file
-    document.getElementById("download-csv").addEventListener("click", function(){
-        table.download("csv", "data.csv");
-    });
-    //trigger download of data.xlsx file
-    document.getElementById("download-xlsx").addEventListener("click", function(){
-        table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
-    });
-    document.getElementById("select-all").addEventListener("click", function(){
-        table.selectRow();
-    });
-    //deselect row on "deselect all" button click
-    document.getElementById("deselect-all").addEventListener("click", function(){
-        table.deselectRow();
-    });
-</script>
-
 {% endblock %}

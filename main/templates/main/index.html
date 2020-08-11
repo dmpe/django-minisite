@@ -7,7 +7,7 @@
 {% block footer %}
 <script type="text/javascript">
     var table = new Tabulator("#example-table", {
-        height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+        height:100%,
         ajaxURL:"https://djangoex.herokuapp.com/recommendation/",
         ajaxConfig:{
             method:"GET",
@@ -16,9 +16,12 @@
             },
         },
         clipboard:true,
+        selectable:true, //make rows selectable
         clipboardPasteAction:"replace",
-        layout:"fitColumns",
+        responsiveLayout:"hide",
+        layout:"fitDataStretch",
         columns:[
+            {formatter:"rownum", hozAlign:"center", width:40},
             {title:"Starting Date", field:"starting_date", width:150, editor:true},
             {title:"Ending Date", field:"ending_date", editor:true},
             {title:"Time Horizon", field:"time_horizon",editor:true},
@@ -26,10 +29,14 @@
             {title:"Position", field:"position", align:"center",editor:true},
             {title:"Outperformance", field:"outperformance", align:"center",editor:true},
             {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:true},
-            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:true},
+            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:true, responsive:2}, # hide this column first
             {title:"Pitch", field:"description", align:"center",editor:true},
             {title:"Analyst's Name", field:"user", align:"center",editor:false},
         ],
+        rowSelectionChanged:function(data, rows){
+            //update selected row counter on selection change
+            document.getElementById("select-stats").innerHTML = data.length;
+        },
     });
     document.getElementById("add-row").addEventListener("click", function(){
         table.addRow({});
@@ -42,17 +49,26 @@
     document.getElementById("download-xlsx").addEventListener("click", function(){
         table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
     });
-
+    document.getElementById("select-all").addEventListener("click", function(){
+        table.selectRow();
+    });
+    //deselect row on "deselect all" button click
+    document.getElementById("deselect-all").addEventListener("click", function(){
+        table.deselectRow();
+    });
 </script>
 
 {% endblock %}
 
 {% block content %}
 <h1>Hello World!</h1>
-<div>
-    <button id="download-csv">Download CSV</button>
-    <button id="download-xlsx">Download XLSX</button>
-    <button id="add-row">Add Blank Row to the top</button>
-</div>
+<div class="container">
+    <div>
+        <button id="download-csv">Download CSV</button>
+        <button id="download-xlsx">Download XLSX</button>
+        <button id="add-row">Add Blank Row to the bottom</button>
+    </div>
+    <div id="example-table"></div>
 
+</div>
 {% endblock %}

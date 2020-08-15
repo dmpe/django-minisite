@@ -11,11 +11,11 @@ from . import views
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="Finance API",
       default_version='v1',
-      description="Test description",
+      description="Testing django microsite",
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      contact=openapi.Contact(email="contact@finance.com"),
       license=openapi.License(name="BSD License"),
    ),
    public=True,

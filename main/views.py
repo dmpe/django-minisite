@@ -11,9 +11,12 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework import routers
 from django.shortcuts import *
+from django.views import View
+from django.views.generic import *
 
 def index(request):
     return render(request, "main/index.html", {})
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -34,16 +37,19 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class SingleRowView():
+class SingleRowView(View):
+    template_name = "edit_row.html"
 
-    def get(self, instance, id):
+    def post(self, instance, id):
         instance = get_object_or_404(Firm_Recommendation, id=id)
         form = RecommendationSingleRowForm(request.POST or None, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('next_view')
-        return render(request, 'edit_row.html', {'form': form})
+            return redirect('main:index')
+        return render(request, self.template_name, {'form': form})
 
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
 
 
 class FinanceApiRoot(APIView):

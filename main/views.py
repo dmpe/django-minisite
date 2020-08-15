@@ -43,8 +43,8 @@ class SingleRowView(UpdateView):
     template_name = "edit_row.html"
     model = Firm_Recommendation
 
-    def get(self, instance, id):
-        instance = get_object_or_404(Firm_Recommendation, id=id)
+    def get(self, instance, pk):
+        instance = get_object_or_404(Firm_Recommendation, id=pk)
         form = RecommendationSingleRowForm(self.request.POST or None, instance=instance)
         if form.is_valid():
             form.save()

@@ -2,6 +2,7 @@ from django.urls import include, path
 import rest_framework
 from rest_framework import routers
 from rest_framework.authtoken import views
+from rest_framework.utils import urls
 
 from . import views
 

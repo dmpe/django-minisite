@@ -13,6 +13,7 @@ from rest_framework import routers
 from django.shortcuts import *
 from django.views import View
 from django.views.generic import *
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 def index(request):
     return render(request, "main/index.html", {})
@@ -37,8 +38,9 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class SingleRowView(View):
+class SingleRowView(UpdateView):
     template_name = "edit_row.html"
+    model = Firm_Recommendation
 
     def post(self, instance, id):
         instance = get_object_or_404(Firm_Recommendation, id=id)

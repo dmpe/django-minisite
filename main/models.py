@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
-
+from django.urls import reverse
 
 class Firm_Recommendation(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -47,6 +47,9 @@ class Firm_Recommendation(models.Model):
     bloomberg_ticker_2 = models.CharField(
         max_length=50, blank=True, null=True, default=None
     )
+
+    def get_absolute_url(self):
+        return reverse('recommendation-detail', kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ["starting_date"]

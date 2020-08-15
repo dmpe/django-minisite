@@ -31,6 +31,7 @@ router.register(r"recommendation", views.RecommendationViewSet)
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("recommendation/edit_row/<int:id>/", views.SingleRowView.as_view(), name="recommendation-update"),
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("api-token-auth/", rest_framework.authtoken.views.obtain_auth_token),

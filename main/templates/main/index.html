@@ -25,6 +25,9 @@
     <div id="example-table"></div>
 
 <script type="text/javascript">
+    var printIcon = function(cell, formatterParams, onRendered){ //plain text value
+        return "<i class='fa fa-print'></i>";
+    };
     var table = new Tabulator("#example-table", {
         height:'100%',
         ajaxURL:"./api/recommendation/",
@@ -42,15 +45,16 @@
         layout:"fitDataStretch",
         columns:[
             {formatter:"rownum", hozAlign:"center", width:40},
-            {title:"Starting Date", field:"starting_date", width:150, editor:true},
-            {title:"Ending Date", field:"ending_date", editor:true},
-            {title:"Time Horizon", field:"time_horizon",editor:true},
-            {title:"Positioning", field:"positioning", align:"center",editor:true},
-            {title:"Position", field:"position", align:"center",editor:true},
-            {title:"Outperformance", field:"outperformance", align:"center",editor:true},
-            {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:true},
-            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:true, responsive:2}, // hide this column first
-            {title:"Pitch", field:"description", align:"center",editor:true},
+            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getRow().getData().name)}},
+            {title:"Starting Date", field:"starting_date", width:150, editor:false},
+            {title:"Ending Date", field:"ending_date", editor:false},
+            {title:"Time Horizon", field:"time_horizon",editor:false},
+            {title:"Positioning", field:"positioning", align:"center",editor:false},
+            {title:"Position", field:"position", align:"center",editor:false},
+            {title:"Outperformance", field:"outperformance", align:"center",editor:false},
+            {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:false},
+            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:false, responsive:2}, // hide this column first
+            {title:"Pitch", field:"description", align:"center",editor:false},
             {title:"Analyst's Name", field:"user", align:"center",editor:false},
         ]
     });

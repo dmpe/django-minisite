@@ -16,7 +16,7 @@
     <div>
         <button id="download-csv">Download CSV</button>
         <button id="download-xlsx">Download XLSX</button>
-        <button id="add-row">Add Blank Row to the bottom</button>
+        <button id="add-row">Add Blank Row to the top</button>
         <button id="select-all">Select all</button>
         <button id="deselect-all">Deselect all</button>
         <button id="save" class="justify-content-end">Save and Submit</button>
@@ -78,6 +78,9 @@
             type : 'PATCH',
             dataType: 'json',
             url: "./api/recommendation/",
+            headers: {
+                "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db', //set specific content type
+            },
             data: JSON.stringify(updatedData),
         })
         .done(function( msg ) {

@@ -19,8 +19,8 @@ class Firm_Recommendation(models.Model):
         ("L", "Large"),
     )
     POSITION = (
-        ("S", "Long"),
-        ("M", "Short"),
+        ("S", "Short"),
+        ("M", "Long"),
         ("PT", "Pair-Trade"),
     )
     positioning = models.CharField(max_length=10, choices=POSITIONING)

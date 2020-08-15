@@ -45,11 +45,11 @@ class SingleRowView(UpdateView):
 
     def get(self, instance, id):
         instance = get_object_or_404(Firm_Recommendation, id=id)
-        form = RecommendationSingleRowForm(request.POST or None, instance=instance)
+        form = RecommendationSingleRowForm(self.request.POST or None, instance=instance)
         if form.is_valid():
             form.save()
             return redirect("main:index")
-        return render(request, self.template_name, {"form": form})
+        return render(self.request, self.template_name, {"form": form})
 
     # def get(self, request, *args, **kwargs):
     #     display_bject = Firm_Recommendation.objects.get(pk=pk)

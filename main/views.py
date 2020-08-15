@@ -1,14 +1,16 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import *
 from django.shortcuts import render
 from rest_framework import permissions, viewsets
 from main.models import Firm_Recommendation
+from main.form import RecommendationSingleRowForm
 from main.ser import FirmRecommendationSerializer, UserSerializer
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework import routers
+from django.shortcuts import *
 
 def index(request):
     return render(request, "main/index.html", {})
@@ -30,6 +32,17 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     queryset = Firm_Recommendation.objects.all()
     serializer_class = FirmRecommendationSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class SingleRowView():
+
+    def get(self, instance, id):
+        instance = get_object_or_404(Firm_Recommendation, id=id)
+        form = RecommendationSingleRowForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('next_view')
+        return render(request, 'edit_row.html', {'form': form})
 
 
 

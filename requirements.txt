@@ -11,3 +11,4 @@ django-bootstrap4
 django-auth-ldap
 django-cors-headers
 argon2-cffi
+django-widget-tweaks

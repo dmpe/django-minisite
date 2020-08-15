@@ -4,7 +4,6 @@ from django.shortcuts import render
 from rest_framework import permissions, viewsets
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
@@ -38,6 +37,6 @@ class FinanceApiRoot(APIView):
 
     def get(self, request, format=None):
         return Response({
-            'users': reverse('user-list', request=request, format=format),
+            'user': reverse('user-list', request=request, format=format),
             'recommendation': reverse('recommendation-list', request=request, format=format)
         })

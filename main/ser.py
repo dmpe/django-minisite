@@ -4,14 +4,14 @@ from rest_framework import routers, serializers, viewsets
 from main.models import Firm_Recommendation
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
         fields = ["url", "id", "username", "email", "is_staff"]
 
 
-class FirmRecommendationSerializer(serializers.HyperlinkedModelSerializer):
+class FirmRecommendationSerializer(serializers.ModelSerializer):
 
 
     class Meta:

@@ -6,6 +6,8 @@ from rest_framework.utils import urls
 
 from . import views
 
+app_name = "main"
+
 # https://www.django-rest-framework.org/api-guide/routers/
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)

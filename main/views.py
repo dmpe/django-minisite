@@ -43,7 +43,7 @@ class SingleRowView(UpdateView):
     template_name = "edit_row.html"
     model = Firm_Recommendation
 
-    def post(self, instance, id):
+    def get(self, instance, id):
         instance = get_object_or_404(Firm_Recommendation, id=id)
         form = RecommendationSingleRowForm(request.POST or None, instance=instance)
         if form.is_valid():
@@ -51,8 +51,9 @@ class SingleRowView(UpdateView):
             return redirect("main:index")
         return render(request, self.template_name, {"form": form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+    # def get(self, request, *args, **kwargs):
+    #     display_bject = Firm_Recommendation.objects.get(pk=pk)
+    #     return render(request, self.template_name, {"form": display_bject})
 
 
 class FinanceApiRoot(APIView):

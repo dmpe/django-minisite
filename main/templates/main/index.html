@@ -45,7 +45,7 @@
         layout:"fitDataStretch",
         columns:[
             {title:"ID in Table", field:"id", hozAlign:"center", width:40, editor:false},
-            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + row.getData().id)}},
+            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + row.getCell(0).getValue())}},
             {title:"Starting Date", field:"starting_date", width:150, editor:false},
             {title:"Ending Date", field:"ending_date", editor:false},
             {title:"Time Horizon", field:"time_horizon",editor:false},

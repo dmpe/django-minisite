@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
     var printIcon = function(cell, formatterParams, onRendered){ //plain text value
-        return "<i class='fa fa-print'></i>";
+        return "<i class='fa fa-edit'></i>";
     };
     var table = new Tabulator("#example-table", {
         height:'100%',
@@ -44,8 +44,8 @@
         addRowPos: "top",
         layout:"fitDataStretch",
         columns:[
-            {formatter:"rownum", hozAlign:"center", width:40},
-            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getRow().getData().name)}},
+            {title:"ID in Table", field:"id", hozAlign:"center", width:40, editor:false},
+            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + row.getData().id)}},
             {title:"Starting Date", field:"starting_date", width:150, editor:false},
             {title:"Ending Date", field:"ending_date", editor:false},
             {title:"Time Horizon", field:"time_horizon",editor:false},

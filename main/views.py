@@ -42,6 +42,7 @@ class RecommendationViewSet(viewsets.ModelViewSet):
 class SingleRowView(UpdateView):
     template_name = "edit_row.html"
     model = Firm_Recommendation
+    form_class = RecommendationSingleRowForm
 
     def get(self, instance, pk):
         instance = get_object_or_404(Firm_Recommendation, id=pk)

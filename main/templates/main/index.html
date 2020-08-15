@@ -44,18 +44,18 @@
         addRowPos: "top",
         layout:"fitColumns",
         columns:[
-            {title:"ID in Table", field:"id", hozAlign:"center", width:40, editor:false},
-            {formatter: printIcon, width:40, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getData().id)}},
-            {title:"Starting Date", field:"starting_date", width:150, editor:false},
+            {title:"ID in Table", field:"id", hozAlign:"center", editor:false},
+            {formatter: printIcon, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getData().id)}},
+            {title:"Your Name", field:"user", align:"center",editor:false, responsive:3},
+            {title:"Starting Date", field:"starting_date", editor:false},
             {title:"Ending Date", field:"ending_date", editor:false},
             {title:"Time Horizon", field:"time_horizon",editor:false},
-            {title:"Positioning", field:"positioning", align:"center",editor:true},
-            {title:"Position", field:"position", align:"center",editor:true},
-            {title:"Outperformance", field:"outperformance", align:"center",editor:true},
+            {title:"Positioning", field:"positioning", align:"center",editor:false},
+            {title:"Position", field:"position", align:"center",editor:false},
+            {title:"Outperformance", field:"outperformance", align:"center",editor:false},
             {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:false},
             {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:false, responsive:2}, // hide this column first
             {title:"Pitch", field:"description", align:"center",editor:false},
-            {title:"Analyst's Name", field:"user", align:"center",editor:false},
         ]
     });
     document.getElementById("add-row").addEventListener("click", function(){
@@ -76,7 +76,7 @@
     document.getElementById("deselect-all").addEventListener("click", function(){
         table.deselectRow();
     });
-    document.getElementById("save").addEventListener("click", function(){
+    {% comment %} document.getElementById("save").addEventListener("click", function(){
         var crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
         var updatedData = table.getData();
         $.ajax({
@@ -93,7 +93,7 @@
         .done(function( msg ) {
             alert( "Data Saved: " + msg );
         });
-    });
+    }); {% endcomment %}
 </script>
 
 </div>

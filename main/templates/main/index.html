@@ -49,9 +49,9 @@
             {title:"Starting Date", field:"starting_date", width:150, editor:false},
             {title:"Ending Date", field:"ending_date", editor:false},
             {title:"Time Horizon", field:"time_horizon",editor:false},
-            {title:"Positioning", field:"positioning", align:"center",editor:false},
-            {title:"Position", field:"position", align:"center",editor:false},
-            {title:"Outperformance", field:"outperformance", align:"center",editor:false},
+            {title:"Positioning", field:"positioning", align:"center",editor:true},
+            {title:"Position", field:"position", align:"center",editor:true},
+            {title:"Outperformance", field:"outperformance", align:"center",editor:true},
             {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:false},
             {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:false, responsive:2}, // hide this column first
             {title:"Pitch", field:"description", align:"center",editor:false},
@@ -83,7 +83,7 @@
             contentType : 'application/json',
             type : 'PATCH',
             dataType: 'json',
-            url: "./api/recommendation/1",
+            url: "./api/recommendation/1/",
             headers: {
                 "X-CSRFToken": crf_token,
                 "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db',

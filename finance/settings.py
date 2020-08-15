@@ -70,11 +70,15 @@ REST_FRAMEWORK = {
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ROOT_URLCONF = "finance.urls"
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "main/templates"),],
+        "DIRS": [
+            os.path.join(BASE_DIR, "main/templates"),
+            os.path.join(SETTINGS_PATH, 'templates'),
+            os.path.join(BASE_DIR, 'main', 'templates', 'main'),],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

@@ -8,8 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["url", "id", "username", "email", "is_staff"]
-
+        fields = "__all__"
 
 class FirmRecommendationSerializer(serializers.ModelSerializer):
 

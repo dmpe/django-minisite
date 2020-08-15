@@ -11,7 +11,7 @@ router.register(r"recommendation", views.RecommendationViewSet)
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("", include(router.urls)),
+    path("", include(router.urls, namespace='main')),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("api-token-auth/", rest_framework.authtoken.views.obtain_auth_token),
 ]

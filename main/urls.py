@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 import rest_framework
 from rest_framework import routers
 from rest_framework.authtoken import views
@@ -34,7 +34,7 @@ urlpatterns = [
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("api-token-auth/", rest_framework.authtoken.views.obtain_auth_token),
-    path('swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path("^swagger(?P<format>.json|.yaml)$", schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path("swagger/", schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
 ]

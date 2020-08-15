@@ -74,11 +74,11 @@
     document.getElementById("save").addEventListener("click", function(){
         var updatedData = table.getData();
         $.ajax({
-                contentType : 'application/json',
-                type : 'PATCH',
-                dataType: 'json'
-                url: "./api/recommendation/",
-                data: JSON.stringify(updatedData),
+            contentType : 'application/json',
+            type : 'PATCH',
+            dataType: 'json'
+            url: "./api/recommendation/",
+            data: JSON.stringify(updatedData),
         })
         .done(function( msg ) {
             alert( "Data Saved: " + msg );

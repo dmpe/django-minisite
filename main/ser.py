@@ -5,9 +5,6 @@ from main.models import Firm_Recommendation
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # lookup_field="id"
-    # id = serializers.ReadOnlyField()
-    url = serializers.HyperlinkedIdentityField(view_name="user-detail")
 
     class Meta:
         model = User
@@ -15,8 +12,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class FirmRecommendationSerializer(serializers.HyperlinkedModelSerializer):
-    # id = serializers.ReadOnlyField() ## used for filtering
-    # lookup_field="id"
+
+
     class Meta:
         model = Firm_Recommendation
         fields = "__all__"

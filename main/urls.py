@@ -31,7 +31,7 @@ router.register(r"recommendation", views.RecommendationViewSet)
 urlpatterns = [
     path("", views.index, name="index"),
     path(
-        "recommendation/edit_row/<int:id>/",
+        "recommendation/edit_row/<slug:pk>/",
         views.SingleRowView.as_view(),
         name="recommendation-update",
     ),

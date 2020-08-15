@@ -19,10 +19,10 @@ DEBUG = True
 ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]
 
 PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.Argon2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
 
 INSTALLED_APPS = [
@@ -32,18 +32,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'drf_yasg',
-    'corsheaders',
+    "drf_yasg",
+    "corsheaders",
     "main",
     "bootstrap4",
     "rest_framework",
     "rest_framework.authtoken",
-    'widget_tweaks',
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
-    'main.middleware.HealthCheckMiddleware',  # new
-    'corsheaders.middleware.CorsMiddleware',
+    "main.middleware.HealthCheckMiddleware",  # new
+    "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -61,8 +61,8 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
 }
@@ -77,8 +77,9 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "main/templates"),
-            os.path.join(SETTINGS_PATH, 'templates'),
-            os.path.join(BASE_DIR, 'main', 'templates', 'main'),],
+            os.path.join(SETTINGS_PATH, "templates"),
+            os.path.join(BASE_DIR, "main", "templates", "main"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

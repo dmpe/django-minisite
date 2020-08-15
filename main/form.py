@@ -1,6 +1,8 @@
 from django import forms
 from rest_framework import fields
+
 from . import models
+
 
 class RecommendationSingleRowForm(forms.ModelForm):
     class Meta:

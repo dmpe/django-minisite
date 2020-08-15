@@ -1,32 +1,33 @@
 from django.contrib.auth.models import User
 from django.http import *
-from django.shortcuts import render
-from rest_framework import permissions, viewsets
-from main.models import Firm_Recommendation
-from main.form import RecommendationSingleRowForm
-from main.ser import FirmRecommendationSerializer, UserSerializer
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
-from rest_framework.views import APIView
-from rest_framework import status
-from rest_framework import routers
 from django.shortcuts import *
+from django.shortcuts import render
 from django.views import View
 from django.views.generic import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from rest_framework import permissions, routers, status, viewsets
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from rest_framework.views import APIView
+
+from main.form import RecommendationSingleRowForm
+from main.models import Firm_Recommendation
+from main.ser import FirmRecommendationSerializer, UserSerializer
+
 
 def index(request):
     return render(request, "main/index.html", {})
-
 
 
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
+
     queryset = User.objects.all().order_by("-date_joined")
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
 
 class RecommendationViewSet(viewsets.ModelViewSet):
     """
@@ -47,17 +48,20 @@ class SingleRowView(UpdateView):
         form = RecommendationSingleRowForm(request.POST or None, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('main:index')
-        return render(request, self.template_name, {'form': form})
+            return redirect("main:index")
+        return render(request, self.template_name, {"form": form})
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
 
 class FinanceApiRoot(APIView):
-
     def get(self, request, format=None):
-        return Response({
-            'user': reverse('user-list', request=request, format=format),
-            'recommendation': reverse('recommendation-list', request=request, format=format)
-        })
+        return Response(
+            {
+                "user": reverse("user-list", request=request, format=format),
+                "recommendation": reverse(
+                    "recommendation-list", request=request, format=format
+                ),
+            }
+        )

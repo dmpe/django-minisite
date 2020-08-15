@@ -72,6 +72,7 @@
         table.deselectRow();
     });
     document.getElementById("save").addEventListener("click", function(){
+        var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
         var updatedData = table.getData();
         $.ajax({
             contentType : 'application/json',
@@ -79,7 +80,8 @@
             dataType: 'json',
             url: "./api/recommendation/",
             headers: {
-                "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db', //set specific content type
+                "X-CSRFToken": "$crf_token",
+                "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db',
             },
             data: JSON.stringify(updatedData),
         })

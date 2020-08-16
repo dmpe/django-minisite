@@ -1,4 +1,4 @@
-from main.views import LoginView
+# from main.views import LoginView
 import rest_framework
 from django.urls import include, path, re_path
 from drf_yasg import openapi

@@ -34,11 +34,12 @@ urlpatterns = [
     path("", views.index, name="index"),
     path(
         "login",
-        auth_views.LoginView.as_view(template_name="main/auth/login.html"),
+        auth_views.LoginView.as_view(template_name="main/auth/login.html",
+            extra_context={
+                'next': 'index',
+            },
+        ),
         name="login",
-        extra_context={
-            'next': 'index',
-        },
     ),
     path("logout", auth_views.LogoutView.as_view(), name="logout"),
     path(

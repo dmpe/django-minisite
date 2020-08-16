@@ -59,8 +59,8 @@ PROMETHEUS_LATENCY_BUCKETS = (
 # "django_auth_ldap.backend.LDAPBackend",
 
 MIDDLEWARE = [
-    "django_prometheus.middleware.PrometheusBeforeMiddleware",
-    "main.middleware.HealthCheckMiddleware",  # new
+    # "django_prometheus.middleware.PrometheusBeforeMiddleware",
+    "main.middleware.HealthCheckMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.core.context_processors.request",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -72,7 +72,7 @@ MIDDLEWARE = [
     # "django.contrib.auth.middleware.PersistentRemoteUserMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_prometheus.middleware.PrometheusAfterMiddleware",
+    # "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
 REST_FRAMEWORK = {

@@ -40,8 +40,13 @@ urlpatterns = [
     path("logout", auth_views.LogoutView.as_view(), name="logout"),
     path(
         "recommendation/edit_row/<slug:pk>/",
-        views.SingleRowView.as_view(),
+        views.SingleRowEditView.as_view(),
         name="recommendation-update",
+    ),
+    path(
+        "recommendation/add_row/",
+        views.SingleRowCreateView.as_view(),
+        name="recommendation-create",
     ),
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),

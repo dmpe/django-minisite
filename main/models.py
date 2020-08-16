@@ -5,9 +5,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 from rest_framework.authtoken.models import Token
+from django_prometheus.models import ExportModelOperationsMixin
 
-
-class Firm_Recommendation(models.Model):
+class Firm_Recommendation(ExportModelOperationsMixin('firm_recommendation'), models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     starting_date = models.DateField()

@@ -39,9 +39,13 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "widget_tweaks",
+    'django_prometheus',
 ]
 
+PROMETHEUS_LATENCY_BUCKETS = (1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.5, 9.0, 12.0, 15.0, 20.0, 30.0)
+
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     "main.middleware.HealthCheckMiddleware",  # new
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     # "django.contrib.auth.backends.ModelBackend",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
 
 REST_FRAMEWORK = {

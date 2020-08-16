@@ -62,7 +62,6 @@ MIDDLEWARE = [
     # "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "main.middleware.HealthCheckMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    # "django.core.context_processors.request",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

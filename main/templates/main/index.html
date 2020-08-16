@@ -16,15 +16,15 @@ Your Homepage
         <h1>Welcome to Finance</h1>
     </nav>
 
-    <h2>Hi {{ user.get_short_name }}</h2>
+    <h2>Hi {{ user.username }}</h2>
 
     <div>
         <button id="download-csv">Download CSV</button>
         <button id="download-xlsx">Download XLSX</button>
-        {% comment %} <button id="add-row">Add Blank Row to the top</button> {% endcomment %}
+        <a class="btn btn-primary" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
         <button id="select-all">Select all</button>
         <button id="deselect-all">Deselect all</button>
-        <button id="save" class="justify-content-end">Save and Submit</button>
+        {% comment %} <button id="save">Save and Submit</button> {% endcomment %}
     </div>
     {% csrf_token %}
     <div id="example-table"></div>

@@ -13,8 +13,8 @@ from rest_framework import permissions, routers, status, viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
-
-from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm, form
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
 
@@ -72,8 +72,9 @@ class SingleRowCreateView(CreateView):
             post.save()
             return redirect('main:recommendation-update', pk=post.pk)
 
-    def get(self, *args, **kwargs):
-        return render(self.request, self.template_name)
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
 
 class FinanceApiRoot(APIView):
     def get(self, request, format=None):

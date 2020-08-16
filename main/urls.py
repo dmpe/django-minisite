@@ -1,3 +1,4 @@
+from main.views import LoginView
 import rest_framework
 from django.urls import include, path, re_path
 from drf_yasg import openapi
@@ -7,6 +8,7 @@ from rest_framework.authtoken import views
 from rest_framework.utils import urls
 
 from . import views
+from django.contrib.auth import views as auth_views
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -30,6 +32,8 @@ router.register(r"recommendation", views.RecommendationViewSet)
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("login", auth_views.LoginView.as_view(template_name='auth/login.html'), name="login"),
+    path("logout", auth_views.LogoutView.as_view(), name="logout"),
     path(
         "recommendation/edit_row/<slug:pk>/",
         views.SingleRowView.as_view(),
@@ -48,5 +52,5 @@ urlpatterns = [
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
-    path('', include('django_prometheus.urls')),
+    path('prometheus/', include('django_prometheus.urls')),
 ]

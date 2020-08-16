@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+Your Homepage
+{% endblock %}
 
 {% block footer %}
 <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
@@ -7,16 +10,18 @@
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container-fluid">
     <nav>
         <h1>Welcome to Finance</h1>
     </nav>
-    <h1>Hello World!</h1>
+
+    <h2>Hi {{ user.get_short_name }}</h2>
 
     <div>
         <button id="download-csv">Download CSV</button>
         <button id="download-xlsx">Download XLSX</button>
-        <button id="add-row">Add Blank Row to the top</button>
+        {% comment %} <button id="add-row">Add Blank Row to the top</button> {% endcomment %}
         <button id="select-all">Select all</button>
         <button id="deselect-all">Deselect all</button>
         <button id="save" class="justify-content-end">Save and Submit</button>
@@ -34,7 +39,7 @@
         ajaxConfig:{
             method:"GET",
             headers: {
-                "Authorization": 'Token 6b5afc0c48ad9ee364fe9be0861aa310d21c746e', //set specific content type
+                "Authorization": 'Token 6b5afc0c48ad9ee364fe9be0861aa310d21c746e', // big todo how to fetch data via django rest api
             },
         },
         clipboard:true,
@@ -58,21 +63,18 @@
             {title:"Pitch", field:"description", align:"center",editor:false},
         ]
     });
-    document.getElementById("add-row").addEventListener("click", function(){
+    {% comment %} document.getElementById("add-row").addEventListener("click", function(){
         table.addRow({});
-    });
-    //trigger download of data.csv file
+    }); {% endcomment %}
     document.getElementById("download-csv").addEventListener("click", function(){
         table.download("csv", "data.csv");
     });
-    //trigger download of data.xlsx file
     document.getElementById("download-xlsx").addEventListener("click", function(){
-        table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
+        table.download("xlsx", "data.xlsx", {sheetName:"My Index Data"});
     });
     document.getElementById("select-all").addEventListener("click", function(){
         table.selectRow();
     });
-    //deselect row on "deselect all" button click
     document.getElementById("deselect-all").addEventListener("click", function(){
         table.deselectRow();
     });
@@ -97,4 +99,8 @@
 </script>
 
 </div>
+{% else %}
+
+{% endif %}
+
 {% endblock %}

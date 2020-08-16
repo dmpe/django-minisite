@@ -49,7 +49,7 @@ class SingleRowEditView(UpdateView):
     model = Firm_Recommendation
     form_class = RecommendationSingleRowEditForm
 
-    def get(self, instance, pk):
+    def post(self, instance, pk):
         instance = get_object_or_404(Firm_Recommendation, id=pk)
         form = RecommendationSingleRowEditForm(self.request.POST or None, instance=instance)
         if form.is_valid():
@@ -57,6 +57,10 @@ class SingleRowEditView(UpdateView):
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
 
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.fields['user'].initial = request.user.id
+        return render(request, self.template_name, {'form': form})
 
 class SingleRowCreateView(CreateView):
     template_name = "add_row.html"

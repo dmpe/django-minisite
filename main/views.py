@@ -1,6 +1,8 @@
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import *
-from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import *
 from django.shortcuts import render
 from django.views import View
@@ -10,15 +12,16 @@ from rest_framework import permissions, routers, status, viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
-from django.contrib.auth.decorators import login_required
+
 from main.form import RecommendationSingleRowForm
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
-from django.contrib.auth import views as auth_views
 
-@login_required(login_url='/login')
+
+# @login_required(login_url="/login")
 def index(request):
     return render(request, "main/index.html", {})
+
 
 # class LoginView(View):
 #     """

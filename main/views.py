@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm, form
+from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
 

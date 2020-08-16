@@ -50,7 +50,7 @@ Your Homepage
         layout:"fitColumns",
         columns:[
             {title:"ID in Table", field:"id", hozAlign:"center", editor:false},
-            {formatter: printIcon, align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getData().id)}},
+            {formatter: printIcon, title: "Edit", align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getData().id)}},
             {title:"Your Name", field:"user", align:"center",editor:false, responsive:3},
             {title:"Starting Date", field:"starting_date", editor:false},
             {title:"Ending Date", field:"ending_date", editor:false},

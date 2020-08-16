@@ -17,7 +17,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
-
+from rest_framework.renderers import TemplateHTMLRenderer
 
 # @login_required(login_url="/login")
 def index(request):
@@ -42,6 +42,15 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     queryset = Firm_Recommendation.objects.all()
     serializer_class = FirmRecommendationSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class RecommendationViewListSet(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'index.html'
+
+    def get(self, request):
+        queryset = Firm_Recommendation.objects.all()
+        return Response({'recommendations': queryset})
 
 
 class SingleRowEditView(UpdateView):

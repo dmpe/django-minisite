@@ -4,13 +4,13 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
-from django_prometheus.models import ExportModelOperationsMixin
+# from django_prometheus.models import ExportModelOperationsMixin
 from rest_framework.authtoken.models import Token
 
-
+ # ExportModelOperationsMixin('firm_recommendation'), see https://github.com/korfuri/django-prometheus/issues/217
 class Firm_Recommendation(
     models.Model
-):  # ExportModelOperationsMixin('firm_recommendation'), see https://github.com/korfuri/django-prometheus/issues/217
+):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     starting_date = models.DateField()

@@ -19,12 +19,11 @@ Your Homepage
     <h2>Hi {{ user.username }}</h2>
 
     <div>
-        <button id="download-csv">Download CSV</button>
-        <button id="download-xlsx">Download XLSX</button>
+        <button id="download-csv" class="btn btn-primary">Download CSV</button>
+        <button id="download-xlsx" class="btn btn-primary">Download XLSX</button>
         <a class="btn btn-primary" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
-        <button id="select-all">Select all</button>
-        <button id="deselect-all">Deselect all</button>
-        {% comment %} <button id="save">Save and Submit</button> {% endcomment %}
+        <button id="select-all" class="btn btn-primary">Select all</button>
+        <button id="deselect-all" class="btn btn-primary">Deselect all</button>
     </div>
     {% csrf_token %}
     <div id="example-table"></div>
@@ -63,9 +62,7 @@ Your Homepage
             {title:"Pitch", field:"description", align:"center",editor:false},
         ]
     });
-    {% comment %} document.getElementById("add-row").addEventListener("click", function(){
-        table.addRow({});
-    }); {% endcomment %}
+
     document.getElementById("download-csv").addEventListener("click", function(){
         table.download("csv", "data.csv");
     });
@@ -78,24 +75,6 @@ Your Homepage
     document.getElementById("deselect-all").addEventListener("click", function(){
         table.deselectRow();
     });
-    {% comment %} document.getElementById("save").addEventListener("click", function(){
-        var crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
-        var updatedData = table.getData();
-        $.ajax({
-            contentType : 'application/json',
-            type : 'PATCH',
-            dataType: 'json',
-            url: "./api/recommendation/1/",
-            headers: {
-                "X-CSRFToken": crf_token,
-                "Authorization": 'Token 6e9e2fc75444377bb5a7078179b391118cbb92db',
-            },
-            data: JSON.stringify(updatedData[0]),
-        })
-        .done(function( msg ) {
-            alert( "Data Saved: " + msg );
-        });
-    }); {% endcomment %}
 </script>
 
 </div>

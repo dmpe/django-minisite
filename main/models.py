@@ -52,8 +52,8 @@ class Firm_Recommendation(
         max_length=50, blank=True, null=True, default=None
     )
 
-    def get_absolute_url(self):
-        return reverse("recommendation-detail", kwargs={"pk": self.pk})
+    # def get_absolute_url(self):
+    #     return reverse("recommendation-detail", kwargs={"pk": self.pk})
 
     class Meta:
         ordering = ["starting_date"]

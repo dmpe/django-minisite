@@ -30,7 +30,9 @@ Your Homepage
     <div id="example-table"></div>
 
     {% for rec in recommendations %}
-        <table class="table">
+    <div class="table-responsive">
+        <table class="table table-bordered border-primary caption-top">
+            <caption>List of users</caption>
             <thead>
                 <tr>
                 <th scope="col">ID in Table</th>
@@ -103,6 +105,7 @@ Your Homepage
                 </tr>
             </tbody>
         </table>
+    </div>
     {% endfor %}
 
 <script type="text/javascript">

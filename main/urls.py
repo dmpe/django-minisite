@@ -36,7 +36,7 @@ urlpatterns = [
         "login",
         auth_views.LoginView.as_view(template_name="main/auth/login.html",
             extra_context={
-                'next': 'index',
+                'next': '',
             },
         ),
         name="login",

@@ -31,7 +31,7 @@ router.register(r"user", views.UserViewSet)
 router.register(r"recommendation", views.RecommendationViewSet)
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.HomePage.as_view(), name="index"),
     path(
         "login",
         auth_views.LoginView.as_view(template_name="main/auth/login.html",

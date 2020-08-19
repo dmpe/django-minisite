@@ -36,7 +36,7 @@ class Firm_Recommendation(
         ("Sector Europe", "SEC_EUR"),
         ("None (for Pair-Trade)", "NONE"),
     )
-    outperformance = models.CharField(max_length=10, choices=PERF)
+    outperformance = models.CharField(max_length=30, choices=PERF)
 
     TIME_HOR = (
         ("1 Week", "1w"),

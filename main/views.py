@@ -24,12 +24,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class HomePage(LoginRequiredMixin, APIView, View):
     template_name = "main/index.html"
     renderer_classes = [TemplateHTMLRenderer]
-    queryset = Firm_Recommendation.objects.all()
 
     def get(self, request, *args, **kwargs):
 
         if request.user.is_authenticated:
-            return Response({'recommendations': self.queryset}, self.template_name)
+            queryset = Firm_Recommendation.objects.all()
+            return Response({'recommendations': queryset}, template_name=self.template_name)
         else:
             return render(self.request, self.template_name)
 

@@ -21,7 +21,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class HomePage(LoginRequiredMixin, APIView, View):
+class HomePage(LoginRequiredMixin, APIView):
     template_name = "main/index.html"
     renderer_classes = [TemplateHTMLRenderer]
 
@@ -29,7 +29,7 @@ class HomePage(LoginRequiredMixin, APIView, View):
 
         if request.user.is_authenticated:
             queryset = Firm_Recommendation.objects.all()
-            return Response({'recommendations': queryset}, template_name=self.template_name)
+            return Response({'recommendations': queryset})
         else:
             return render(self.request, self.template_name)
 

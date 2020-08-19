@@ -31,7 +31,7 @@ Your Homepage
 
     <div id="example-table"></div>
 
-    {% for rec in recommendations %}
+    {% comment %} {% for rec in recommendations %}
     <div class="table-responsive">
         <table class="table table-bordered border-primary caption-top">
             <caption>List of users</caption>
@@ -108,7 +108,7 @@ Your Homepage
             </tbody>
         </table>
     </div>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
 <script type="text/javascript">
     var printIcon = function(cell, formatterParams, onRendered){ //plain text value

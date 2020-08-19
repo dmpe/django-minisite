@@ -14,7 +14,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
+LOGIN_URL = '/login'
 DEBUG = True
 
 ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]

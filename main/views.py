@@ -29,7 +29,7 @@ class HomePage(LoginRequiredMixin, APIView, View):
     def get(self, request, *args, **kwargs):
 
         if request.user.is_authenticated:
-            return Response(self.request, self.template_name, {'recommendations': self.queryset})
+            return Response({'recommendations': self.queryset}, self.template_name)
         else:
             return render(self.request, self.template_name)
 

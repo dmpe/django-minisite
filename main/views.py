@@ -30,10 +30,6 @@ class HomePage(LoginRequiredMixin, APIView):
         if request.user.is_authenticated:
             queryset = Firm_Recommendation.objects.all()
             return Response({'recommendations': queryset})
-        else:
-            return render(self.request, self.template_name)
-
-
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -55,7 +51,7 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class SingleRowEditView(UpdateView):
+class SingleRowEditView(LoginRequiredMixin, UpdateView):
     template_name = "edit_row.html"
     model = Firm_Recommendation
     form_class = RecommendationSingleRowEditForm
@@ -68,7 +64,7 @@ class SingleRowEditView(UpdateView):
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
 
-class SingleRowCreateView(CreateView):
+class SingleRowCreateView(LoginRequiredMixin, CreateView):
     template_name = "add_row.html"
     model = Firm_Recommendation
     form_class = RecommendationSingleRowCreateForm

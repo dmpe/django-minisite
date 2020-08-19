@@ -31,7 +31,7 @@ Your Homepage
 
     <div id="example-table"></div>
 
-    {% comment %} {% for rec in recommendations %}
+    {% for rec in recommendations %}
     <div class="table-responsive">
         <table class="table table-bordered border-primary caption-top">
             <caption>List of users</caption>
@@ -58,7 +58,7 @@ Your Homepage
                     </tr>
                 <tr>
                     <th scope="row">2</th>
-                        <td><a class="btn btn-primary" href="{% url 'main:recommendation-edit' %}" role="button">Edit</a></td>
+                        <td><a class="btn btn-primary" href="{% url 'main:recommendation-Update' %}" role="button">Update</a></td>
                     </th>
                 <tr>
                     <th scope="row">3</th>
@@ -108,7 +108,7 @@ Your Homepage
             </tbody>
         </table>
     </div>
-    {% endfor %} {% endcomment %}
+    {% endfor %}
 
 <script type="text/javascript">
     var printIcon = function(cell, formatterParams, onRendered){ //plain text value

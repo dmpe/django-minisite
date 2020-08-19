@@ -17,14 +17,14 @@ class Firm_Recommendation(
     ending_date = models.DateField()
 
     POSITIONING = (
-        ("S", "Small"),
-        ("M", "Mid"),
-        ("L", "Large"),
+        ("Small", "S"),
+        ("Mid", "M"),
+        ("Large", "L"),
     )
     POSITION = (
-        ("S", "Short"),
-        ("M", "Long"),
-        ("PT", "Pair-Trade"),
+        ("Short", "S"),
+        ("Long", "L"),
+        ("Pair-Trade", "PT"),
     )
     positioning = models.CharField(max_length=10, choices=POSITIONING)
     position = models.CharField(max_length=10, choices=POSITION)
@@ -33,18 +33,18 @@ class Firm_Recommendation(
 
     PERF = (
         ("DAX", "DAX"),
-        ("SEC_EUR", "Sector Europe"),
-        ("NONE", "None (for Pair-Trade)"),
+        ("Sector Europe", "SEC_EUR"),
+        ("None (for Pair-Trade)", "NONE"),
     )
     outperformance = models.CharField(max_length=10, choices=PERF)
 
     TIME_HOR = (
-        ("1w", "1 Week"),
-        ("2w", "2 Weeks"),
-        ("1m", "1 Month"),
-        ("3m", "3 Month"),
-        ("6m", "6 Month"),
-        ("1y", "1 Year"),
+        ("1 Week", "1w"),
+        ("2 Weeks", "2w"),
+        ("1 Month", "1m"),
+        ("3 Month", "3m"),
+        ("6 Month", "6m"),
+        ("1 Year", "1y"),
     )
     time_horizon = models.CharField(max_length=10, choices=TIME_HOR)
     bloomberg_ticker_1 = models.CharField(max_length=50)

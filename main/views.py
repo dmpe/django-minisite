@@ -26,12 +26,12 @@ class HomePage(LoginRequiredMixin, APIView, View):
     renderer_classes = [TemplateHTMLRenderer]
 
     def get(self, request):
-        
+
         if request.user.is_authenticated:
             queryset = Firm_Recommendation.objects.all()
-            return render(request, self.template_name, {'recommendations': queryset})
+            return render(self.request, self.template_name, {'recommendations': queryset})
         else:
-            return render(request, self.template_name)
+            return render(self.request, self.template_name)
 
 
 

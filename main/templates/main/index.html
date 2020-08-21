@@ -31,7 +31,6 @@ Your Homepage
 
     <div id="example-table"></div>
 
-    {% for rec in recommendations %}
     <div class="table-responsive">
         <table class="table table-bordered border-primary caption-top">
             <caption>List of users</caption>
@@ -39,7 +38,6 @@ Your Homepage
                 <tr>
                     <th scope="col">ID in Table</th>
                     <th scope="col">Edit</th>
-                    <th scope="col">Your Name</th>
                     <th scope="col">Starting Date</th>
                     <th scope="col">Ending Date</th>
                     <th scope="col">Time Horizon</th>
@@ -52,103 +50,25 @@ Your Homepage
                 </tr>
             </thead>
             <tbody>
+                {% for rec in recommendations %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
+                    <th scope="row">{{ rec.id }}</th>
                     <td><a class="btn btn-primary" href="{% url 'main:recommendation-update' rec.id %}" role="button">Update</a></td>
+                    <td>{{ rec.starting_date }}</td>
+                    <td>{{ rec.ending_date }}</td>
+                    <td>{{ rec.positioning }}</td>
+                    <td>{{ rec.position }}</td>
+                    <td>{{ rec.description }}</td>
+                    <td>{{ rec.outperformance }}</td>
+                    <td>{{ rec.time_horizon }}</td>
+                    <td>{{ rec.bloomberg_ticker_1 }}</td>
+                    <td>{{ rec.bloomberg_ticker_2 }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">8</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">9</th>
-                    <td>@twitter</td>
-                    </th>
-                </tr>
-                <tr>
-                    <th scope="row">10</th>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">11</th>
-                    <td>@twitter</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
-    {% endfor %}
 
-<script type="text/javascript">
-    var printIcon = function(cell, formatterParams, onRendered){ //plain text value
-        return "<i class='fa fa-edit'></i>";
-    };
-    var table = new Tabulator("#example-table", {
-        height:'100%',
-        ajaxURL:"./api/recommendation/",
-        ajaxConfig:{
-            method:"GET",
-            headers: {
-                "Authorization": 'Token 6b5afc0c48ad9ee364fe9be0861aa310d21c746e', // big todo how to fetch data via django rest api
-            },
-        },
-        clipboard:true,
-        selectable:true, //make rows selectable
-        clipboardPasteAction:"replace",
-        responsiveLayout:"hide",
-        addRowPos: "top",
-        layout:"fitColumns",
-        columns:[
-            {title:"ID in Table", field:"id", hozAlign:"center", editor:false},
-            {formatter: printIcon, title: "Edit", align:"center", cellClick:function(e, cell){alert("Printing row data for: " + cell.getData().id)}},
-            {title:"Your Name", field:"user", align:"center",editor:false, responsive:3},
-            {title:"Starting Date", field:"starting_date", editor:false},
-            {title:"Ending Date", field:"ending_date", editor:false},
-            {title:"Time Horizon", field:"time_horizon",editor:false},
-            {title:"Positioning", field:"positioning", align:"center",editor:false},
-            {title:"Position", field:"position", align:"center",editor:false},
-            {title:"Outperformance", field:"outperformance", align:"center",editor:false},
-            {title:"BBG Ticker 1", field:"bloomberg_ticker_1", align:"center",editor:false},
-            {title:"BBG Ticker 2 (for Pair Trade)", field:"bloomberg_ticker_2", align:"center",editor:false, responsive:2}, // hide this column first
-            {title:"Pitch", field:"description", align:"center",editor:false},
-        ]
-    });
-
-    document.getElementById("download-csv").addEventListener("click", function(){
-        table.download("csv", "data.csv");
-    });
-    document.getElementById("download-xlsx").addEventListener("click", function(){
-        table.download("xlsx", "data.xlsx", {sheetName:"My Index Data"});
-    });
-    document.getElementById("select-all").addEventListener("click", function(){
-        table.selectRow();
-    });
-    document.getElementById("deselect-all").addEventListener("click", function(){
-        table.deselectRow();
-    });
 </script>
 
 </div>

@@ -6,47 +6,53 @@ from django.dispatch import receiver
 from django.urls import reverse
 # from django_prometheus.models import ExportModelOperationsMixin
 from rest_framework.authtoken.models import Token
+from django.utils.translation import gettext_lazy as _
+# ExportModelOperationsMixin('firm_recommendation'), see https://github.com/korfuri/django-prometheus/issues/217
 
- # ExportModelOperationsMixin('firm_recommendation'), see https://github.com/korfuri/django-prometheus/issues/217
 class Firm_Recommendation(
     models.Model
 ):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    class Positioning(models.TextChoices):
+        SMALL = 'S', _('Small')
+        MID = 'M', _('Mid')
+        LARGE = 'L', _('Large')
+
+    class Position(models.TextChoices):
+        SHORT = 'S', _('Short')
+        LONG = 'L', _('Long')
+        PAIR = 'PT', _('Pair-Trade')
+
+
+    class Time(models.TextChoices):
+        ONEWEEK = "1w", _("1 Week")
+        TWOWEEKS = "2w", _("2 Weeks")
+        ONEMONTH = "1m", _("1 Month")
+        THREEMONTHS = "3m", _("3 Month")
+        SIXMONTHS = "6m", _("6 Month")
+        ONEYEAR = "1y", _("1 Year")
+
+    class Performance(models.TextChoices):
+        DAX = "DAX", _("DAX")
+        SEC_EUR = "SEC_EUR", _("Sector Europe")
+        NONE = "NONE", _("None (for Pair-Trade)")
+
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # use today ?
     starting_date = models.DateField()
     ending_date = models.DateField()
 
-    POSITIONING = (
-        ("Small", "S"),
-        ("Mid", "M"),
-        ("Large", "L"),
-    )
-    POSITION = (
-        ("Short", "S"),
-        ("Long", "L"),
-        ("Pair-Trade", "PT"),
-    )
-    positioning = models.CharField(max_length=10, choices=POSITIONING)
-    position = models.CharField(max_length=10, choices=POSITION)
+    # add defaults ?
+    positioning = models.CharField(max_length=10, choices=Positioning.choices)
+    position = models.CharField(max_length=10, choices=Position.choices)
 
     description = models.CharField(max_length=500)
 
-    PERF = (
-        ("DAX", "DAX"),
-        ("Sector Europe", "SEC_EUR"),
-        ("None (for Pair-Trade)", "NONE"),
-    )
-    outperformance = models.CharField(max_length=30, choices=PERF)
+    outperformance = models.CharField(max_length=30, choices=Performance.choices)
 
-    TIME_HOR = (
-        ("1 Week", "1w"),
-        ("2 Weeks", "2w"),
-        ("1 Month", "1m"),
-        ("3 Month", "3m"),
-        ("6 Month", "6m"),
-        ("1 Year", "1y"),
-    )
-    time_horizon = models.CharField(max_length=10, choices=TIME_HOR)
+
+    time_horizon = models.CharField(max_length=10, choices=Time.choices)
     bloomberg_ticker_1 = models.CharField(max_length=50)
     bloomberg_ticker_2 = models.CharField(
         max_length=50, blank=True, null=True, default=None

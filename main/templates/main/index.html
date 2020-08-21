@@ -23,9 +23,9 @@ Your Homepage
     <div>
         <button id="download-csv" class="btn btn-primary">Download CSV</button>
         <button id="download-xlsx" class="btn btn-primary">Download XLSX</button>
-        <a class="btn btn-primary" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
         <button id="select-all" class="btn btn-primary">Select all</button>
         <button id="deselect-all" class="btn btn-primary">Deselect all</button>
+        <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
     </div>
     {% csrf_token %}
 

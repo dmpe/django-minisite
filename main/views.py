@@ -28,7 +28,7 @@ class HomePage(LoginRequiredMixin, APIView):
     def get(self, request, *args, **kwargs):
 
         if request.user.is_authenticated:
-            queryset = Firm_Recommendation.objects.filter(user=request.users.id)
+            queryset = Firm_Recommendation.objects.filter(user=request.user.id)
             return Response({'recommendations': queryset})
 
 class UserViewSet(viewsets.ModelViewSet):

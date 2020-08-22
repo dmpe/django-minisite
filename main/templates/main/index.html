@@ -56,10 +56,10 @@ Your Homepage
                     <td><a class="btn btn-primary" href="{% url 'main:recommendation-update' rec.id %}" role="button">Update</a></td>
                     <td>{{ rec.starting_date }}</td>
                     <td>{{ rec.ending_date }}</td>
-                    <td>{{ rec.positioning }}</td>
-                    <td>{{ rec.position }}</td>
+                    <td>{{ rec.positioning.label }}</td>
+                    <td>{{ rec.position.label }}</td>
                     <td>{{ rec.description }}</td>
-                    <td>{{ rec.outperformance }}</td>
+                    <td>{{ rec.outperformance.label }}</td>
                     <td>{{ rec.time_horizon }}</td>
                     <td>{{ rec.bloomberg_ticker_1 }}</td>
                     <td>{{ rec.bloomberg_ticker_2 }}</td>

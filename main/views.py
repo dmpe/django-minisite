@@ -61,7 +61,7 @@ class SingleRowEditView(LoginRequiredMixin, UpdateView):
         form = RecommendationSingleRowEditForm(self.request.POST or None, instance=instance)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.author = self.request.user
             post.save()
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
@@ -75,7 +75,7 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
         new_object = RecommendationSingleRowCreateForm(request.POST)
         if new_object.is_valid():
             post = new_object.save(commit=False)
-            post.author = request.user
+            post.author = self.request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('main:recommendation-update', pk=post.pk)

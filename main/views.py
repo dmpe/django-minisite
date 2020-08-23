@@ -82,8 +82,8 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        form.fields['user'].initial = request.user.id
-        return render(request, self.template_name, {'form': form})
+        form.fields['user'].initial = self.request.user.id
+        return render(self.request, self.template_name, {'form': form})
 
 class FinanceApiRoot(APIView):
     def get(self, request, format=None):

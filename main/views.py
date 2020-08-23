@@ -61,7 +61,7 @@ class SingleRowEditView(LoginRequiredMixin, UpdateView):
         form = RecommendationSingleRowEditForm(self.request.POST or None, instance=instance)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = self.request.user
+            # post.author = self.request.user
             post.save()
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
@@ -75,14 +75,13 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
         new_object = RecommendationSingleRowCreateForm(request.POST)
         if new_object.is_valid():
             post = new_object.save(commit=False)
-            post.author = self.request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('main:recommendation-update', pk=post.pk)
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        form.fields['user'].initial = self.request.user.id
+        # form.fields['user'].initial = request.user.id
         return render(self.request, self.template_name, {'form': form})
 
 class FinanceApiRoot(APIView):

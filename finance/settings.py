@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "widget_tweaks",
-    "django_prometheus",
 ]
 
 PROMETHEUS_LATENCY_BUCKETS = (

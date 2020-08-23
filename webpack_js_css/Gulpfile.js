@@ -18,7 +18,7 @@ function js() {
 function css() {
   return src(['./node_modules/@fortawesome/fontawesome-free/css/all.min.css',
     "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "../static/style.css",
+    // "../static/style.css",
     "./node_modules/bootstrap-table/dist/bootstrap-table.min.css"])
     .pipe(concat('all_files.css'))
     .pipe(dest('../static'));

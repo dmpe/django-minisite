@@ -4,13 +4,9 @@
     <title>{% block title %}{% endblock %} - Web</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/css/tabulator.min.css" integrity="sha512-m+pVeAP9rKfz2fegXO9izXrIko79BeMGptw+JsemhYbWGe/8OpN2VucqmT2anVPOSSubjuh9rb/F9FHdhYmWOw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/js/tabulator.min.js" integrity="sha512-EEOeU0j0Ormj4n/iguNsYzFnro2ogm7FPYXknR7V3ardPQ2V9kYjFllMZAYueE+t9gUuAQYY0k3w2wDa6wamow==" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/css/bootstrap/tabulator_bootstrap4.min.css" integrity="sha512-uEWpGZKAzqeRfifcdwBBXxur+k9Z7bjRwWNROIDIpVtJTt2gAapH4Fulqk0rP2ACE0OFFWsCBccR6RZcw9WsCw==" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/4787d4b381.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'all_files.css' %}">
+    <script src="{% static 'all_files.js' %}" crossorigin="anonymous"></script>
     {% block head %}{% endblock %}
 </head>
 <body>

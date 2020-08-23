@@ -60,7 +60,9 @@ class SingleRowEditView(LoginRequiredMixin, UpdateView):
         instance = get_object_or_404(Firm_Recommendation, id=pk)
         form = RecommendationSingleRowEditForm(self.request.POST or None, instance=instance)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
 

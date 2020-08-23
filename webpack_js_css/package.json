@@ -1,0 +1,26 @@
+{
+  "name": "webpack_js_css",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bundle Javascript and CSS files together",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dmpe",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^5.0.0-alpha1",
+    "bootstrap-table": "^1.17.1",
+    "gulp": "^4.0.2",
+    "gulp-compress": "0.0.9",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.5.1",
+    "jquery-ui": "^1.12.1",
+    "popper.js": "^1.16.1",
+    "xlsx": "^0.16.6"
+  }
+}

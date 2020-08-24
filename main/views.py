@@ -69,7 +69,7 @@ class SingleRowEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         firm_rec_obj = self.get_object()
         return firm_rec_obj.user == self.request.user
 
-class SingleRowCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class SingleRowCreateView(LoginRequiredMixin, CreateView):
     template_name = "add_row.html"
     model = Firm_Recommendation
     form_class = RecommendationSingleRowCreateForm

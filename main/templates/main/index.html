@@ -15,16 +15,14 @@ Your Homepage
 
     <div>
         <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
+        <div id="toolbar" class="select">
+            <select class="form-control">
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+            </select>
+        </div>
     </div>
     {% csrf_token %}
-
-    <div id="toolbar" class="select">
-        <select class="form-control">
-            <option value="">Export Basic</option>
-            <option value="all">Export All</option>
-            <option value="selected">Export Selected</option>
-        </select>
-    </div>
 
     <div class="table-responsive" data-toggle="table"
         data-search="true"
@@ -80,7 +78,7 @@ Your Homepage
         $('#toolbar').find('select').change(function () {
             $table.bootstrapTable('destroy').bootstrapTable({
                 exportDataType: $(this).val(),
-                exportTypes: ['json', 'xml', 'csv', 'txt', 'excel'],
+                exportTypes: ['csv', 'excel'],
             })
         }).trigger('change')
     })

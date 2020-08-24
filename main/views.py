@@ -1,22 +1,22 @@
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.http import *
 from django.shortcuts import *
-from django.utils import timezone
 from django.shortcuts import render
+from django.utils import timezone
 from django.views import View
 from django.views.generic import *
 from django.views.generic.edit import CreateView, UpdateView
 from rest_framework import permissions, viewsets
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from main.form import RecommendationSingleRowEditForm, RecommendationSingleRowCreateForm
+
+from main.form import RecommendationSingleRowCreateForm, RecommendationSingleRowEditForm
 from main.models import Firm_Recommendation
 from main.ser import FirmRecommendationSerializer, UserSerializer
-from rest_framework.renderers import TemplateHTMLRenderer
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomePage(LoginRequiredMixin, APIView):
@@ -27,7 +27,8 @@ class HomePage(LoginRequiredMixin, APIView):
 
         if request.user.is_authenticated:
             queryset = Firm_Recommendation.objects.filter(user=request.user.id)
-            return Response({'recommendations': queryset})
+            return Response({"recommendations": queryset})
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -56,13 +57,16 @@ class SingleRowEditView(LoginRequiredMixin, UpdateView):
 
     def post(self, instance, pk):
         instance = get_object_or_404(Firm_Recommendation, id=pk)
-        form = RecommendationSingleRowEditForm(self.request.POST or None, instance=instance)
+        form = RecommendationSingleRowEditForm(
+            self.request.POST or None, instance=instance
+        )
         if form.is_valid():
             post = form.save(commit=False)
             # post.author = self.request.user
             post.save()
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
+
 
 class SingleRowCreateView(LoginRequiredMixin, CreateView):
     template_name = "add_row.html"
@@ -75,12 +79,13 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
             post = new_object.save(commit=False)
             post.published_date = timezone.now()
             post.save()
-            return redirect('main:recommendation-update', pk=post.pk)
+            return redirect("main:recommendation-update", pk=post.pk)
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         # form.fields['user'].initial = request.user.id
-        return render(self.request, self.template_name, {'form': form})
+        return render(self.request, self.template_name, {"form": form})
+
 
 class FinanceApiRoot(APIView):
     def get(self, request, format=None):

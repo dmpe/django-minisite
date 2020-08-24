@@ -13,8 +13,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CORS_ORIGIN_ALLOW_ALL = True
 
 SECRET_KEY = os.environ["SECRET_KEY"]
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/login"
 DEBUG = True
 
 ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]

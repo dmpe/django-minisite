@@ -34,10 +34,8 @@ urlpatterns = [
     path("", views.HomePage.as_view(), name="index"),
     path(
         "login",
-        auth_views.LoginView.as_view(template_name="main/auth/login.html",
-            extra_context={
-                'next': '',
-            },
+        auth_views.LoginView.as_view(
+            template_name="main/auth/login.html", extra_context={"next": "",},
         ),
         name="login",
     ),

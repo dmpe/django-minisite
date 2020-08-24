@@ -7,11 +7,12 @@ from . import models
 class RecommendationSingleRowEditForm(forms.ModelForm):
     class Meta:
         model = models.Firm_Recommendation
-        fields = '__all__'
-        exclude = ['user']
+        fields = "__all__"
+        exclude = ["user"]
+
 
 class RecommendationSingleRowCreateForm(forms.ModelForm):
     class Meta:
         model = models.Firm_Recommendation
-        fields = '__all__'
-        exclude = ['user']
+        fields = "__all__"
+        exclude = ["user"]

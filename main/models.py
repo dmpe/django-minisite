@@ -4,23 +4,20 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
-from rest_framework.authtoken.models import Token
 from django.utils.translation import gettext_lazy as _
+from rest_framework.authtoken.models import Token
 
-class Firm_Recommendation(
-    models.Model
-):
 
+class Firm_Recommendation(models.Model):
     class Positioning(models.TextChoices):
-        SMALL = 'S', _('Small')
-        MID = 'M', _('Mid')
-        LARGE = 'L', _('Large')
+        SMALL = "S", _("Small")
+        MID = "M", _("Mid")
+        LARGE = "L", _("Large")
 
     class Position(models.TextChoices):
-        SHORT = 'S', _('Short')
-        LONG = 'L', _('Long')
-        PAIR = 'PT', _('Pair-Trade')
-
+        SHORT = "S", _("Short")
+        LONG = "L", _("Long")
+        PAIR = "PT", _("Pair-Trade")
 
     class Time(models.TextChoices):
         ONEWEEK = "1w", _("1 Week")
@@ -35,7 +32,6 @@ class Firm_Recommendation(
         SEC_EUR = "SEC_EUR", _("Sector Europe")
         NONE = "NONE", _("None (for Pair-Trade)")
 
-
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # use today ?
     starting_date = models.DateField()
@@ -48,7 +44,6 @@ class Firm_Recommendation(
     description = models.CharField(max_length=500)
 
     outperformance = models.CharField(max_length=30, choices=Performance.choices)
-
 
     time_horizon = models.CharField(max_length=10, choices=Time.choices)
     bloomberg_ticker_1 = models.CharField(max_length=50)

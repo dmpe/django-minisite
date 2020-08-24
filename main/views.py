@@ -1,11 +1,9 @@
-from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.http import *
 from django.shortcuts import *
 from django.shortcuts import render
 from django.utils import timezone
-from django.views import View
 from django.views.generic import *
 from django.views.generic.edit import CreateView, UpdateView
 from rest_framework import permissions, viewsets
@@ -50,7 +48,7 @@ class RecommendationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class SingleRowEditView(LoginRequiredMixin, UpdateView):
+class SingleRowEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "edit_row.html"
     model = Firm_Recommendation
     form_class = RecommendationSingleRowEditForm
@@ -67,8 +65,11 @@ class SingleRowEditView(LoginRequiredMixin, UpdateView):
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
 
+    def test_func(self):
+        firm_rec_obj = self.get_object()
+        return firm_rec_obj.user == self.request.user
 
-class SingleRowCreateView(LoginRequiredMixin, CreateView):
+class SingleRowCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     template_name = "add_row.html"
     model = Firm_Recommendation
     form_class = RecommendationSingleRowCreateForm
@@ -86,6 +87,9 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
         # form.fields['user'].initial = request.user.id
         return render(self.request, self.template_name, {"form": form})
 
+    def test_func(self):
+        firm_rec_obj = self.get_object()
+        return firm_rec_obj.user == self.request.user
 
 class FinanceApiRoot(APIView):
     def get(self, request, format=None):

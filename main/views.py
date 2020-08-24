@@ -28,6 +28,7 @@ class HomePage(LoginRequiredMixin, APIView):
             return Response({"recommendations": queryset})
 
 
+# both have to be adjusted, becasue can view everything
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.

@@ -24,17 +24,14 @@ Your Homepage
     </div>
     {% csrf_token %}
 
-    <div class="table-responsive" data-toggle="table"
-        data-search="true"
-        data-show-columns="true"
-        data-buttons-align="left"
-        data-cookie="true"
-        data-cookie-id-table="saveId"
-        data-click-to-select="true"
-        data-show-copy-rows="true"
-        data-show-export="true"
-    >
-        <table class="table table-bordered border-primary caption-top">
+    <div class="table-responsive">
+        <table class="table table-bordered border-primary caption-top"
+            data-toggle="table"
+            data-search="true"
+            data-buttons-align="right"
+            data-show-search-clear-button="true"
+            data-show-export="true"
+        >
             <caption>List of users</caption>
             <thead>
                 <tr>

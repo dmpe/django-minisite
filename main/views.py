@@ -60,11 +60,11 @@ class SingleRowEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         )
         if form.is_valid():
             post = form.save(commit=False)
-            # post.author = self.request.user
             post.save()
             return redirect("main:index")
         return render(self.request, self.template_name, {"form": form})
 
+    # is working with 403 Forbidden
     def test_func(self):
         firm_rec_obj = self.get_object()
         return firm_rec_obj.user == self.request.user
@@ -84,12 +84,8 @@ class SingleRowCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        # form.fields['user'].initial = request.user.id
         return render(self.request, self.template_name, {"form": form})
 
-    def test_func(self):
-        firm_rec_obj = self.get_object()
-        return firm_rec_obj.user == self.request.user
 
 class FinanceApiRoot(APIView):
     def get(self, request, format=None):

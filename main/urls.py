@@ -1,4 +1,3 @@
-# from main.views import LoginView
 import rest_framework
 from django.contrib.auth import views as auth_views
 from django.urls import include, path, re_path
@@ -63,5 +62,4 @@ urlpatterns = [
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
-    # path("prometheus/", include("django_prometheus.urls")),
 ]

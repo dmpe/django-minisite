@@ -18,6 +18,8 @@ function js() {
     "./node_modules/bootstrap-table/dist/bootstrap-table.min.js",
     "./node_modules/bootstrap-table/dist/extensions/copy-rows/bootstrap-table-copy-rows.min.js",
     "./node_modules/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js",
+    "./node_modules/flatpickr/dist/flatpickr.min.js",
+    "./node_modules/flatpickr/dist/l10n/de.js",
   ])
     .pipe(concat("all_files.js"))
     .pipe(dest("../static"));
@@ -29,6 +31,7 @@ function css() {
     "./node_modules/bootstrap/dist/css/bootstrap.min.css",
     // "../static/style.css",
     "./node_modules/bootstrap-table/dist/bootstrap-table.min.css",
+    "./node_modules/flatpickr/dist/flatpickr.min.css"
   ])
     .pipe(concat("all_files.css"))
     .pipe(dest("../static"));

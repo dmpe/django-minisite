@@ -1,6 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import *
 from django.shortcuts import *
@@ -8,8 +6,8 @@ from django.utils import timezone
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import *
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from rest_framework import permissions, routers, status, viewsets
+from django.views.generic.edit import CreateView, UpdateView
+from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView

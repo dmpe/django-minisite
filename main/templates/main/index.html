@@ -14,20 +14,27 @@ Your Homepage
     <h2>Hello {{ user.username }}</h2>
 
     <div>
-        <button id="download-csv" class="btn btn-primary">Download CSV</button>
-        <button id="download-xlsx" class="btn btn-primary">Download XLSX</button>
-        <button id="select-all" class="btn btn-primary">Select all</button>
-        <button id="deselect-all" class="btn btn-primary">Deselect all</button>
         <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
     </div>
     {% csrf_token %}
 
-    <div id="example-table"></div>
+    <div id="toolbar" class="select">
+        <select class="form-control">
+            <option value="">Export Basic</option>
+            <option value="all">Export All</option>
+            <option value="selected">Export Selected</option>
+        </select>
+    </div>
 
     <div class="table-responsive" data-toggle="table"
         data-search="true"
         data-show-columns="true"
         data-buttons-align="left"
+        data-cookie="true"
+        data-cookie-id-table="saveId"
+        data-click-to-select="true"
+        data-show-copy-rows="true"
+        data-show-export="true"
     >
         <table class="table table-bordered border-primary caption-top">
             <caption>List of users</caption>
@@ -66,7 +73,18 @@ Your Homepage
         </table>
     </div>
 
-</script>
+    <script type="">
+    var $table = $('#table')
+
+    $(function() {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('destroy').bootstrapTable({
+                exportDataType: $(this).val(),
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'excel'],
+            })
+        }).trigger('change')
+    })
+    </script>
 
 </div>
 {% else %}

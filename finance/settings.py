@@ -42,24 +42,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
 ]
 
-PROMETHEUS_LATENCY_BUCKETS = (
-    1.0,
-    2.0,
-    3.0,
-    4.0,
-    5.0,
-    6.0,
-    7.5,
-    9.0,
-    12.0,
-    15.0,
-    20.0,
-    30.0,
-)
-# "django_auth_ldap.backend.LDAPBackend",
-
 MIDDLEWARE = [
-    # "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "main.middleware.HealthCheckMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -71,7 +54,6 @@ MIDDLEWARE = [
     # "django.contrib.auth.middleware.PersistentRemoteUserMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
 REST_FRAMEWORK = {

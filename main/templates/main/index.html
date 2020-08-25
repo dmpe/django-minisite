@@ -13,7 +13,7 @@ Your Homepage
 
     <h2>Hello {{ user.username }}</h2>
 
-    <div>
+    <div class="row">
         <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
         <div id="toolbar" class="select">
             <select class="form-control">
@@ -24,7 +24,7 @@ Your Homepage
     </div>
     {% csrf_token %}
 
-    <div class="table-responsive">
+    <div class="row table-responsive">
         <table class="table table-bordered border-primary caption-top"
             data-toggle="table"
             data-search="true"
@@ -68,7 +68,7 @@ Your Homepage
         </table>
     </div>
 
-    <script type="">
+    <script type='text/javascript'>
     var $table = $('#table')
 
     $(function() {

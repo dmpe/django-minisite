@@ -13,7 +13,6 @@
             <nav>
                 <h1>Edit single row</h1>
             </nav>
-            {% csrf_token %}
 
             <form method="post">
                 {% csrf_token %}
@@ -32,6 +31,8 @@
                 {% endfor %}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
+
         </div>
     </div>
 </div>

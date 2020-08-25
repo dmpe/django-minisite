@@ -14,10 +14,10 @@ Your Homepage
     <h2>Hello {{ user.username }}</h2>
 
     <div class="row">
-        <div class = "col-sm-3">
+        <div class = "col-md-6">
             <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
         </div>
-        <div class = "col-sm-3">
+        <div class = "col-md-6">
             <div id="toolbar" class="select">
                 <select class="form-control">
                     <option value="all">Export All</option>
@@ -83,6 +83,7 @@ Your Homepage
             })
         }).trigger('change')
     })
+
     </script>
 
 </div>

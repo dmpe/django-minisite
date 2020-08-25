@@ -80,7 +80,7 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
         if new_object.is_valid():
             post = new_object.save(commit=False)
             post.published_date = timezone.now()
-            post.user = self.request.user.id
+            post.user = self.request.user
             post.save()
             return redirect("main:recommendation-update", pk=post.pk)
 

@@ -14,12 +14,16 @@ Your Homepage
     <h2>Hello {{ user.username }}</h2>
 
     <div class="row">
-        <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
-        <div id="toolbar" class="select">
-            <select class="form-control">
-                <option value="all">Export All</option>
-                <option value="selected">Export Selected</option>
-            </select>
+        <div class = "col-sm-3">
+            <a class="btn btn-danger" href="{% url 'main:recommendation-create' %}" role="button">Add new entry</a>
+        </div>
+        <div class = "col-sm-3">
+            <div id="toolbar" class="select">
+                <select class="form-control">
+                    <option value="all">Export All</option>
+                    <option value="selected">Export Selected</option>
+                </select>
+            </div>
         </div>
     </div>
     {% csrf_token %}
@@ -32,7 +36,7 @@ Your Homepage
             data-show-search-clear-button="true"
             data-show-export="true"
         >
-            <caption>List of users</caption>
+            <caption>List of User Alpha Recommendations</caption>
             <thead>
                 <tr>
                     <th scope="col">ID in Table</th>

@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "widget_tweaks",
+    'django_guid',
 ]
 
 MIDDLEWARE = [
+    'django_guid.middleware.GuidMiddleware',
     "main.middleware.HealthCheckMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -130,3 +132,24 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
+LOGGING = {
+    'filters': {
+        'correlation_id': {
+            '()': 'django_guid.log_filters.CorrelationId'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'medium',
+            'filters': ['correlation_id'],
+        }
+    },
+     'formatters': {
+        'medium': {
+            'format': '%(levelname)s %(asctime)s [%(correlation_id)s] %(name)s %(message)s'
+        }
+    }
+}

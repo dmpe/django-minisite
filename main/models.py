@@ -6,9 +6,15 @@ from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from rest_framework.authtoken.models import Token
+import uuid
 
 
 class Firm_Recommendation(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    # another unique id - potentially to be used later
+    uuid = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
+
     class Positioning(models.TextChoices):
         SMALL = "S", _("Small")
         MID = "M", _("Mid")
@@ -32,20 +38,19 @@ class Firm_Recommendation(models.Model):
         SEC_EUR = "SEC_EUR", _("Sector Europe")
         NONE = "NONE", _("None (for Pair-Trade)")
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # use today ?
+    # Automatically set the field to now every time the object is saved. Useful for “last-modified” timestamps.
+    pub_date = models.DateTimeField('date_published', auto_now=True)
     starting_date = models.DateField()
     ending_date = models.DateField()
 
-    # add defaults ?
-    positioning = models.CharField(max_length=10, choices=Positioning.choices)
-    position = models.CharField(max_length=10, choices=Position.choices)
+    positioning = models.CharField(max_length=10, choices=Positioning.choices, default=Positioning.SMALL)
+    position = models.CharField(max_length=10, choices=Position.choices, default=Position.SHORT)
 
     description = models.CharField(max_length=500)
 
-    outperformance = models.CharField(max_length=30, choices=Performance.choices)
+    outperformance = models.CharField(max_length=30, choices=Performance.choices, default=Performance.DAX)
 
-    time_horizon = models.CharField(max_length=10, choices=Time.choices)
+    time_horizon = models.CharField(max_length=10, choices=Time.choices, default=Time.ONEWEEK)
     bloomberg_ticker_1 = models.CharField(max_length=50)
     bloomberg_ticker_2 = models.CharField(
         max_length=50, blank=True, null=True, default=None

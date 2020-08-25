@@ -13,3 +13,4 @@ django-cors-headers
 argon2-cffi
 django-widget-tweaks
 pytest-django
+django-guid

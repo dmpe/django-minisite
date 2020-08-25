@@ -39,7 +39,7 @@ class Firm_Recommendation(models.Model):
         NONE = "NONE", _("None (for Pair-Trade)")
 
     # Automatically set the field to now every time the object is saved. Useful for “last-modified” timestamps.
-    pub_date = models.DateTimeField('date_published', auto_now=True)
+    # pub_date = models.DateTimeField('date_published', auto_now=True)
     starting_date = models.DateField()
     ending_date = models.DateField()
 

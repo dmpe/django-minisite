@@ -1,6 +1,6 @@
 import os
 import sys
-
+import logging
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -135,6 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 LOGGING = {
+    'version': 1,
     'filters': {
         'correlation_id': {
             '()': 'django_guid.log_filters.CorrelationId'

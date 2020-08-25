@@ -76,7 +76,7 @@ class SingleRowCreateView(LoginRequiredMixin, CreateView):
     form_class = RecommendationSingleRowCreateForm
 
     def post(self, request, *args, **kwargs):
-        new_object = RecommendationSingleRowCreateForm(request.POST, initial={"option": "10"})
+        new_object = RecommendationSingleRowCreateForm(request.POST)
         if new_object.is_valid():
             post = new_object.save(commit=False)
             post.published_date = timezone.now()

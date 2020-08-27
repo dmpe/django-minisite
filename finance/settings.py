@@ -31,7 +31,7 @@ LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/login"
 DEBUG = True
 
-ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com"]
+ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com", "127.0.0.1", "0.0.0.0"]
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",

@@ -13,7 +13,7 @@ class Firm_Recommendation(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     # another unique id - potentially to be used later
-    # uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
     class Positioning(models.TextChoices):
         SMALL = "S", _("Small")

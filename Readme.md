@@ -17,7 +17,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-# Static (JS, CSS) files handling
+## Static (JS, CSS) files handling
 
 On production server, there is no access to the internet, hence static resources must be concatenated served within app.
 
@@ -27,7 +27,7 @@ sudo npm install
 gulp # works only if all packages from package.json were installed
 ```
 
-# Local Setup of Postgres
+## Local Setup of Postgres
 
 1. <https://www.postgresql.org/download/linux/ubuntu/>
 
@@ -46,3 +46,11 @@ alter user postgres with password 'postgres';
 3. In pgadmin4, create a new DB called `django`
 
 4. Run django migrations, see above.
+
+## Setup on gitpod.io
+
+1. Launch gitpod from here
+
+2. `createdb -h localhost -p 5432 -U gitpod django`
+
+3. see `gitpod.yml`

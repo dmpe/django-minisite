@@ -11,8 +11,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 CORS_ORIGIN_ALLOW_ALL = True
+if "REMOTE" in os.environ:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+    DATABASES = {"default": dj_database_url.config(ssl_require=True, conn_max_age=600)}
+else:
+    SECRET_KEY = '&vy0wbw6jocmx!+_*0a@4y619cji77vw!)$#8t^xh=*cm4%-wl'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'django',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
-SECRET_KEY = os.environ["SECRET_KEY"]
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/login"
 DEBUG = True
@@ -97,8 +111,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "finance.wsgi.application"
-
-DATABASES = {"default": dj_database_url.config(ssl_require=True, conn_max_age=600)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

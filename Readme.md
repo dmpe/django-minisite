@@ -26,3 +26,23 @@ cd webpack_js_css
 sudo npm install
 gulp # works only if all packages from package.json were installed
 ```
+
+# Local Setup of Postgres
+
+1. <https://www.postgresql.org/download/linux/ubuntu/>
+
+1.5. Install optionally `sudo apt install pgadmin4` due to a great GUI for PG.
+
+Launch with `pgadmin4`
+
+2. You must change DB password, so execute
+
+```
+sudo -u postgres psql postgres
+
+alter user postgres with password 'postgres';
+```
+
+3. In pgadmin4, create a new DB called `django`
+
+4. Run django migrations, see above.

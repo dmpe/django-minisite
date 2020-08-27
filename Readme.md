@@ -2,6 +2,8 @@
 
 <https://djangoex.herokuapp.com>
 
+[![Open in Gitpod Web IDE](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dmpe/django-minisite)
+
 ## Run DJango migrations
 
 ```shell

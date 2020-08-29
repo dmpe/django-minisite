@@ -10,7 +10,7 @@ Basically, a user can create a DB entry and update it afterwards. Nothing specta
 
 ![homepage](images/django-minisite.png)
 
-## Run DJango migrations
+## Run Django migrations
 
 ```shell
 heroku run python3 manage.py makemigrations

@@ -11,11 +11,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 CORS_ORIGIN_ALLOW_ALL = True
+SECRET_KEY = '&vy0wbw6jocmx!+_*0a@4y619cji77vw!)$#8t^xh=*cm4%-wl'
+
 if "REMOTE" in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
     DATABASES = {"default": dj_database_url.config(ssl_require=True, conn_max_age=600)}
+elif "GITPOD_MEMORY" in os.environ:
+    # something gitpod specific, random
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'django',
+            'USER': 'gitpod',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 else:
-    SECRET_KEY = '&vy0wbw6jocmx!+_*0a@4y619cji77vw!)$#8t^xh=*cm4%-wl'
+    # for local development
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -31,7 +45,7 @@ LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/login"
 DEBUG = True
 
-ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ["djangoex.herokuapp.com", ".herokuapp.com", ".gitpod.io", "127.0.0.1", "0.0.0.0"]
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",

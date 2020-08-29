@@ -2,13 +2,15 @@
 
 <https://djangoex.herokuapp.com>
 
+[![Open in Gitpod Web IDE](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dmpe/django-minisite)
+
 A simple CRUD app building for prototyping purposes while at work, using Django 3+.
 
 Basically, a user can create a DB entry and update it afterwards. Nothing spectacular to see here. :kissing:
 
 ![homepage](images/django-minisite.png)
 
-## Run Django migrations
+## Run DJango migrations
 
 ```shell
 heroku run python3 manage.py makemigrations
@@ -52,3 +54,11 @@ alter user postgres with password 'postgres';
 3. In pgadmin4, create a new DB called `django`
 
 4. Run django migrations, see above.
+
+## Setup on gitpod.io
+
+1. Launch gitpod from here
+
+2. `createdb -h localhost -p 5432 -U gitpod django`
+
+3. see `gitpod.yml`

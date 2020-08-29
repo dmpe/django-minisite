@@ -2,7 +2,13 @@
 
 <https://djangoex.herokuapp.com>
 
-## Run DJango migrations
+A simple CRUD app building for prototyping purposes while at work, using Django 3+.
+
+Basically, a user can create a DB entry and update it afterwards. Nothing spectacular to see here. :kissing:
+
+![homepage](images/django-minisite.png)
+
+## Run Django migrations
 
 ```shell
 heroku run python3 manage.py makemigrations
@@ -17,7 +23,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-# Static (JS, CSS) files handling
+## Static (JS, CSS) files handling
 
 On production server, there is no access to the internet, hence static resources must be concatenated served within app.
 
@@ -27,17 +33,17 @@ sudo npm install
 gulp # works only if all packages from package.json were installed
 ```
 
-# Local Setup of Postgres
+## Local Setup of PostgreSQL
 
 1. <https://www.postgresql.org/download/linux/ubuntu/>
 
-1.5. Install optionally `sudo apt install pgadmin4` due to a great GUI for PG.
+    1.5. Install optionally `sudo apt install pgadmin4` due to a great GUI for PG.
 
-Launch with `pgadmin4`
+    Launch with `pgadmin4`.
 
 2. You must change DB password, so execute
 
-```
+```shell
 sudo -u postgres psql postgres
 
 alter user postgres with password 'postgres';

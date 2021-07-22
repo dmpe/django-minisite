@@ -23,7 +23,7 @@
     "jquery-ui": "^1.12.1",
     "popper.js": "^1.16.1",
     "tableexport.jquery.plugin": "^1.10.20",
-    "xlsx": "^0.16.6"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "prettier": "2.1.0"
